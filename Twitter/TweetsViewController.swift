@@ -15,6 +15,7 @@ protocol UITweetsViewControllerDelegate {
     func reloadTable()
     func presentDetailsPage(tweet: Tweet, cell: TweetCell)
     func dismissCompose()
+    func presentProfilePage(tweet: Tweet, cell: TweetTableCell)
 }
 
 class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITweetsViewControllerDelegate {
@@ -123,18 +124,15 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func presentDetailsPage(tweet: Tweet, cell: TweetCell) {
         performSegueWithIdentifier("tweetDetailSegue", sender: cell)
     }
+    
+    func presentProfilePage(tweet: Tweet, cell: TweetTableCell) {
+        performSegueWithIdentifier("toProfilePage", sender: cell)
+    }
     /* ---------- ACTIONS ---------- */
     @IBAction func onLogoutButton(sender: AnyObject) {
         TwitterClient.sharedInstance.logout()
     }
     
-    
-    @IBAction func onComposeButton(sender: AnyObject) {
-        let popUpView = ComposeView.init(frame: CGRectMake(1000, 1000, 300, 500))
-        popUpView.delegate = self
-        popUpController = KLCPopup.init(contentView: popUpView)
-        popUpController!.show()
-    }
     
     /* ---------- SEGUES ---------- */
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -142,7 +140,12 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             let destinationVC = segue.destinationViewController as! TweetDetailViewController
             let senderCell = sender as! TweetCell
             destinationVC.tweet = senderCell.tweetTableCellView.tweetObject
+        } else if (segue.identifier == "toProfilePage") {
+            let destinationVC = segue.destinationViewController as! ProfilePageViewController
+            let senderCell = sender as! TweetTableCell
+            destinationVC.user = senderCell.tweetObject?.user
         }
+
     }
     
     func dismissCompose() {

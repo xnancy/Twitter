@@ -32,6 +32,7 @@ class User: NSObject {
             profileURL = NSURL(string: profileUrlString)
         }
         tagline = dictionary["description"] as? String
+        print("PRINTING -------------------------------------------------------")
         numberFollowers = dictionary["followers_count"] as? String
         numberFollowing = dictionary["friends_count"] as? String
         numberTweets = dictionary["statuses_count"] as? String

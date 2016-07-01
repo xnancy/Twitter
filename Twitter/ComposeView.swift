@@ -24,11 +24,11 @@ class ComposeView: UIView {
     }
     */
 
-    @IBAction func onTweetButton(sender: AnyObject) {
-        print("tweet tapped")
-        TwitterClient.sharedInstance.postTweet(tweetTextView.text)
-        delegate?.dismissCompose()
-    }
+//    @IBAction func onTweetButton(sender: AnyObject) {
+//        print("tweet tapped")
+//        TwitterClient.sharedInstance.postTweet(tweetTextView.text)
+//        // delegate?.dismissCompose()
+//    }
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!

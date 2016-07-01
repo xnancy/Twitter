@@ -29,9 +29,9 @@ class ProfilePageViewController: UIViewController {
         nameLabel.text = user?.name
         handleLabel.text = user?.screenname
         taglineTextView.text = user?.tagline
-        statsSegementedControl.setTitle((user?.numberFollowing)! + " FOLLOWING", forSegmentAtIndex: 0)
-        statsSegementedControl.setTitle((user?.numberFollowers)! + " FOLLOWERS", forSegmentAtIndex: 1)
-        statsSegementedControl.setTitle((user?.numberTweets)! + " TWEETS", forSegmentAtIndex: 2)
+        statsSegementedControl.setTitle("621" + " FOLLOWING", forSegmentAtIndex: 0)
+        statsSegementedControl.setTitle("10.4K " + " FOLLOWERS", forSegmentAtIndex: 1)
+        statsSegementedControl.setTitle("3,011 " + " TWEETS", forSegmentAtIndex: 2)
     }
 
     override func didReceiveMemoryWarning() {

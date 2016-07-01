@@ -16,62 +16,120 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Compose a New Tweet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Vn-kh-GoM">
-                    <rect key="frame" x="212" y="66" width="177" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="What's happening? " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Xrc-mF-LpM">
-                    <rect key="frame" x="19" y="108" width="563" height="271"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eD5-5f-8dB">
+                    <rect key="frame" x="-1" y="38" width="395" height="364"/>
+                    <subviews>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" text="What's happening? " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Xrc-mF-LpM">
+                            <rect key="frame" x="20" y="70" width="355" height="176"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6pt-mg-97m">
+                            <rect key="frame" x="180" y="314" width="42" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="22" id="63N-aq-btx"/>
+                            </constraints>
+                            <state key="normal" title="Tweet"/>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="63N-aq-btx"/>
+                                </mask>
+                            </variation>
+                            <variation key="heightClass=compact-widthClass=compact">
+                                <mask key="constraints">
+                                    <include reference="63N-aq-btx"/>
+                                </mask>
+                            </variation>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Compose a New Tweet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Vn-kh-GoM">
+                            <rect key="frame" x="113" y="20" width="177" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="28" id="FF3-o8-mg9"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="FF3-o8-mg9"/>
+                                </mask>
+                            </variation>
+                            <variation key="heightClass=compact-widthClass=compact">
+                                <mask key="constraints">
+                                    <include reference="FF3-o8-mg9"/>
+                                </mask>
+                            </variation>
+                        </label>
+                    </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                </textView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6pt-mg-97m">
-                    <rect key="frame" x="279" y="519" width="42" height="30"/>
-                    <state key="normal" title="Tweet"/>
-                    <connections>
-                        <action selector="onTweetButton:" destination="-1" eventType="touchUpInside" id="b4K-VC-fIt"/>
-                    </connections>
-                </button>
+                    <constraints>
+                        <constraint firstItem="6pt-mg-97m" firstAttribute="top" secondItem="Xrc-mF-LpM" secondAttribute="bottom" constant="8" symbolic="YES" id="3sq-wx-7Be"/>
+                        <constraint firstItem="Xrc-mF-LpM" firstAttribute="top" secondItem="8Vn-kh-GoM" secondAttribute="bottom" constant="8" symbolic="YES" id="6Sb-OM-au0"/>
+                        <constraint firstItem="8Vn-kh-GoM" firstAttribute="leading" secondItem="Xrc-mF-LpM" secondAttribute="leading" id="TWR-nl-fuo"/>
+                        <constraint firstItem="Xrc-mF-LpM" firstAttribute="centerX" secondItem="6pt-mg-97m" secondAttribute="centerX" id="X0c-xN-irb"/>
+                        <constraint firstItem="6pt-mg-97m" firstAttribute="leading" secondItem="eD5-5f-8dB" secondAttribute="leading" constant="65" id="bCe-qa-g2y"/>
+                        <constraint firstItem="8Vn-kh-GoM" firstAttribute="centerX" secondItem="Xrc-mF-LpM" secondAttribute="centerX" id="daH-iL-5e2"/>
+                        <constraint firstItem="8Vn-kh-GoM" firstAttribute="top" secondItem="eD5-5f-8dB" secondAttribute="top" constant="14" id="jG0-eN-REb"/>
+                        <constraint firstAttribute="trailing" secondItem="Xrc-mF-LpM" secondAttribute="trailing" id="jgr-Mx-asM"/>
+                        <constraint firstItem="8Vn-kh-GoM" firstAttribute="leading" secondItem="eD5-5f-8dB" secondAttribute="leading" id="oDE-fz-GPI"/>
+                        <constraint firstAttribute="bottom" secondItem="6pt-mg-97m" secondAttribute="bottom" constant="-5" id="uWo-LI-Qch"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="TWR-nl-fuo"/>
+                            <exclude reference="daH-iL-5e2"/>
+                            <exclude reference="jG0-eN-REb"/>
+                            <exclude reference="oDE-fz-GPI"/>
+                            <exclude reference="6Sb-OM-au0"/>
+                            <exclude reference="X0c-xN-irb"/>
+                            <exclude reference="jgr-Mx-asM"/>
+                            <exclude reference="3sq-wx-7Be"/>
+                            <exclude reference="bCe-qa-g2y"/>
+                            <exclude reference="uWo-LI-Qch"/>
+                        </mask>
+                    </variation>
+                    <variation key="heightClass=compact-widthClass=compact">
+                        <mask key="constraints">
+                            <include reference="TWR-nl-fuo"/>
+                            <include reference="daH-iL-5e2"/>
+                            <include reference="jG0-eN-REb"/>
+                            <include reference="oDE-fz-GPI"/>
+                            <include reference="6Sb-OM-au0"/>
+                            <include reference="X0c-xN-irb"/>
+                            <include reference="jgr-Mx-asM"/>
+                            <include reference="3sq-wx-7Be"/>
+                            <include reference="bCe-qa-g2y"/>
+                            <include reference="uWo-LI-Qch"/>
+                        </mask>
+                    </variation>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="6pt-mg-97m" secondAttribute="bottom" constant="18" id="0R4-8F-Z2z"/>
-                <constraint firstAttribute="trailing" secondItem="Xrc-mF-LpM" secondAttribute="trailing" constant="26" id="Bhk-c6-2dz"/>
-                <constraint firstItem="6pt-mg-97m" firstAttribute="top" secondItem="Xrc-mF-LpM" secondAttribute="bottom" constant="68" id="J9B-lj-Sn8"/>
-                <constraint firstItem="6pt-mg-97m" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="QC3-7H-ZQY"/>
-                <constraint firstItem="8Vn-kh-GoM" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="58" id="W2o-QT-Pem"/>
-                <constraint firstItem="Xrc-mF-LpM" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="19" id="qrB-40-0iT"/>
-                <constraint firstItem="6pt-mg-97m" firstAttribute="centerX" secondItem="8Vn-kh-GoM" secondAttribute="centerX" id="rOe-pr-j4X"/>
-                <constraint firstItem="Xrc-mF-LpM" firstAttribute="top" secondItem="8Vn-kh-GoM" secondAttribute="bottom" constant="29" id="sS5-lk-JZK"/>
+                <constraint firstItem="eD5-5f-8dB" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="eG8-5e-Wxi"/>
+                <constraint firstAttribute="bottom" secondItem="eD5-5f-8dB" secondAttribute="bottom" constant="26" id="sCd-hE-ZMe"/>
+                <constraint firstAttribute="trailing" secondItem="eD5-5f-8dB" secondAttribute="trailing" constant="16" id="yKQ-GJ-RdO"/>
+                <constraint firstItem="eD5-5f-8dB" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ym8-tp-wWs"/>
             </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <variation key="default">
                 <mask key="constraints">
-                    <exclude reference="Bhk-c6-2dz"/>
-                    <exclude reference="qrB-40-0iT"/>
-                    <exclude reference="sS5-lk-JZK"/>
-                    <exclude reference="W2o-QT-Pem"/>
-                    <exclude reference="0R4-8F-Z2z"/>
-                    <exclude reference="J9B-lj-Sn8"/>
-                    <exclude reference="QC3-7H-ZQY"/>
-                    <exclude reference="rOe-pr-j4X"/>
+                    <exclude reference="eG8-5e-Wxi"/>
+                    <exclude reference="sCd-hE-ZMe"/>
+                    <exclude reference="yKQ-GJ-RdO"/>
+                    <exclude reference="ym8-tp-wWs"/>
                 </mask>
             </variation>
             <variation key="heightClass=compact-widthClass=compact">
                 <mask key="constraints">
-                    <include reference="Bhk-c6-2dz"/>
-                    <include reference="qrB-40-0iT"/>
-                    <include reference="sS5-lk-JZK"/>
-                    <include reference="W2o-QT-Pem"/>
-                    <include reference="0R4-8F-Z2z"/>
-                    <include reference="J9B-lj-Sn8"/>
-                    <include reference="QC3-7H-ZQY"/>
-                    <include reference="rOe-pr-j4X"/>
+                    <include reference="eG8-5e-Wxi"/>
+                    <include reference="sCd-hE-ZMe"/>
+                    <include reference="yKQ-GJ-RdO"/>
+                    <include reference="ym8-tp-wWs"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="210" y="247"/>
+            <point key="canvasLocation" x="275" y="364"/>
         </view>
     </objects>
 </document>

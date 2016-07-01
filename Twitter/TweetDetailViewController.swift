@@ -29,6 +29,9 @@ class TweetDetailViewController: UIViewController, UITweetsViewControllerDelegat
         basicTweetInfoCell.tweetID = tweet.tweetID
         basicTweetInfoCell.tweetObject = tweet
         basicTweetInfoCell.delegate = self
+        
+        replyTextView.text = "@" + (tweet.user?.screenname)!
+        
         let timestampDate = tweet.timestamp
         let currentDate = NSDate()
         if (currentDate.years(from: timestampDate!) > 0) {
@@ -68,6 +71,10 @@ class TweetDetailViewController: UIViewController, UITweetsViewControllerDelegat
     }
     
     func dismissCompose() {
+    }
+    
+    func presentProfilePage(tweet: Tweet, cell: TweetTableCell) {
+        
     }
 
 }

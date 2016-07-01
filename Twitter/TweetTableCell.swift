@@ -105,8 +105,9 @@ class TweetTableCell: UIView {
     }
     
     @IBAction func onCellTap(sender: AnyObject) {
-        let senderTyped = sender as! UITapGestureRecognizer
-        delegate!.presentDetailsPage(tweetObject!, cell: self.superview!.superview! as! TweetCell)
+        if self.superview!.superview! as? TweetCell != nil {
+            delegate!.presentDetailsPage(tweetObject!, cell: self.superview!.superview! as! TweetCell)
+        }
     }
     
     // Send API retweet, update count, present view
@@ -114,6 +115,12 @@ class TweetTableCell: UIView {
         TwitterClient.sharedInstance.retweet(tweetObject!, delegate: delegate!)
         retweetCountLabel.text = String(Int(retweetCountLabel.text!)! + 1)
         delegate?.presentRetweetView()
+    }
+    
+    // TODO
+    @IBAction func onImageTap(sender: AnyObject) {
+        print("image tapped")
+        delegate!.presentProfilePage(tweetObject!, cell: self)
     }
     
     @IBAction func onHeartButton(sender: AnyObject) {

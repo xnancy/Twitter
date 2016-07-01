@@ -110,9 +110,9 @@ class TwitterClient: BDBOAuth1SessionManager {
     }
     
     func postTweet (text: String) {
-        let url = "1.1/statuses/update.json?status=" + text
-        POST(url, parameters: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) -> Void in
-            },
+        print("text is: \(text)")
+        let url = "1.1/statuses/update.json"
+        POST(url, parameters: ["status": text], success: { (task: NSURLSessionDataTask, response: AnyObject?) -> Void in},
              failure:{ (task: NSURLSessionDataTask?, error: NSError) -> Void in
                 print(error.localizedDescription)
             }
