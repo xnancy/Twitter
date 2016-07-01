@@ -36,5 +36,6 @@ class ComposeTweetViewController: UIViewController {
     @IBAction func onTweetButton(sender: AnyObject) {
         TwitterClient.sharedInstance.postTweet(tweetTextView.text)
         self.navigationController?.popViewControllerAnimated(true)
+        
     }
 }

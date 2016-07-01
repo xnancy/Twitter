@@ -21,6 +21,8 @@ protocol UITweetsViewControllerDelegate {
 class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITweetsViewControllerDelegate {
     /* ---------- OUTLETS ---------- */
     @IBOutlet weak var tweetsTable: UITableView!
+    @IBOutlet weak var composeButton: UIBarButtonItem!
+    @IBOutlet weak var logoutButton: UIBarButtonItem!
     
     /* ---------- VARIABLES ---------- */
     var tweets: [Tweet] = []
@@ -31,6 +33,9 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         print("View did load")
         super.viewDidLoad()
         
+        composeButton.tintColor = UIColor.whiteColor()
+        logoutButton.tintColor = UIColor.whiteColor()
+        
         // Refresh control setup 
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(reloadTweets), forControlEvents: .ValueChanged)
@@ -40,6 +45,9 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Instantiate tweets table view
         tweetsTable.delegate = self
         tweetsTable.dataSource = self
+        
+        self.navigationController?.navigationBar.barTintColor = UIColor.purpleColor()
+        self.navigationController?.tabBarController?.tabBar.barTintColor = UIColor.purpleColor()
         
         reloadTweets()
     }
@@ -141,11 +149,10 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             let senderCell = sender as! TweetCell
             destinationVC.tweet = senderCell.tweetTableCellView.tweetObject
         } else if (segue.identifier == "toProfilePage") {
-            let destinationVC = segue.destinationViewController as! ProfilePageViewController
+            let destinationVC = segue.destinationViewController as! ProfilePageViewController2
             let senderCell = sender as! TweetTableCell
             destinationVC.user = senderCell.tweetObject?.user
         }
-
     }
     
     func dismissCompose() {

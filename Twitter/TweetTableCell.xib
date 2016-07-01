@@ -24,17 +24,6 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="128"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mg9-AR-qc7">
-                    <rect key="frame" x="8" y="8" width="75" height="75"/>
-                    <gestureRecognizers/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="75" id="0cF-SC-r7B"/>
-                        <constraint firstAttribute="height" constant="75" id="qlV-Vc-nik"/>
-                    </constraints>
-                    <connections>
-                        <outletCollection property="gestureRecognizers" destination="6Wj-Ip-5sD" appends="YES" id="30S-W9-GEW"/>
-                    </connections>
-                </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="pqm-9M-SaO">
                     <rect key="frame" x="91" y="8" width="34" height="15"/>
                     <constraints>
@@ -117,6 +106,17 @@
                         <action selector="onHeartButton:" destination="-1" eventType="touchUpInside" id="o1k-rx-Ex1"/>
                     </connections>
                 </button>
+                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mg9-AR-qc7">
+                    <rect key="frame" x="8" y="8" width="75" height="75"/>
+                    <gestureRecognizers/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="75" id="0cF-SC-r7B"/>
+                        <constraint firstAttribute="height" constant="75" id="qlV-Vc-nik"/>
+                    </constraints>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="6Wj-Ip-5sD" appends="YES" id="30S-W9-GEW"/>
+                    </connections>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <gestureRecognizers/>

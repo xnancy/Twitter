@@ -14,6 +14,7 @@ class Tweet: NSObject {
     var name: String?
     var handle: String?
     var profileURL: NSURL?
+    var backgroundURL: NSURL?
     var tweet: String?
     var timestamp: NSDate?
     var retweetCount: Int = 0
@@ -30,6 +31,13 @@ class Tweet: NSObject {
             profileURL = NSURL(string: profileUrlString)
             print("actuaul url: \(profileURL?.absoluteString)")
         }
+        
+        let backgroundURLString = dictionary["user"]!["profile_background_image_url_https"] as? String
+        print("profile_background_image_url_https: \(backgroundURLString)")
+        if let backgroundURLString = backgroundURLString {
+            backgroundURL = NSURL(string: backgroundURLString)
+        }
+        
         user = User.init(dictionary: dictionary["user"] as! NSDictionary)
         tweet = dictionary["text"] as? String
         retweetCount = (dictionary["retweet_count"] as? Int) ?? 0

@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eD5-5f-8dB">
+                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eD5-5f-8dB">
                     <rect key="frame" x="-1" y="38" width="395" height="364"/>
                     <subviews>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" text="What's happening? " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Xrc-mF-LpM">
@@ -77,13 +77,13 @@
                     </constraints>
                     <variation key="default">
                         <mask key="constraints">
+                            <exclude reference="6Sb-OM-au0"/>
+                            <exclude reference="X0c-xN-irb"/>
+                            <exclude reference="jgr-Mx-asM"/>
                             <exclude reference="TWR-nl-fuo"/>
                             <exclude reference="daH-iL-5e2"/>
                             <exclude reference="jG0-eN-REb"/>
                             <exclude reference="oDE-fz-GPI"/>
-                            <exclude reference="6Sb-OM-au0"/>
-                            <exclude reference="X0c-xN-irb"/>
-                            <exclude reference="jgr-Mx-asM"/>
                             <exclude reference="3sq-wx-7Be"/>
                             <exclude reference="bCe-qa-g2y"/>
                             <exclude reference="uWo-LI-Qch"/>
@@ -91,13 +91,13 @@
                     </variation>
                     <variation key="heightClass=compact-widthClass=compact">
                         <mask key="constraints">
+                            <include reference="6Sb-OM-au0"/>
+                            <include reference="X0c-xN-irb"/>
+                            <include reference="jgr-Mx-asM"/>
                             <include reference="TWR-nl-fuo"/>
                             <include reference="daH-iL-5e2"/>
                             <include reference="jG0-eN-REb"/>
                             <include reference="oDE-fz-GPI"/>
-                            <include reference="6Sb-OM-au0"/>
-                            <include reference="X0c-xN-irb"/>
-                            <include reference="jgr-Mx-asM"/>
                             <include reference="3sq-wx-7Be"/>
                             <include reference="bCe-qa-g2y"/>
                             <include reference="uWo-LI-Qch"/>

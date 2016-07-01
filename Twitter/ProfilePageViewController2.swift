@@ -8,26 +8,25 @@
 
 import UIKit
 
-class ProfilePageViewController: UIViewController {
-
+class ProfilePageViewController2: UIViewController {
+    
     /* ---------- OUTLETS ----------- */
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var handleLabel: UILabel!
     @IBOutlet weak var taglineTextView: UITextView!
     @IBOutlet weak var statsSegementedControl: UISegmentedControl!
+    @IBOutlet weak var backgroundImageView: UIImageView!
     
-    @IBOutlet weak var bannerImageView: UIImageView!
     /* ---------- VARIABLES ----------- */
     var user: User?
     
     /* ---------- VIEW CONTROLLER ---------- */
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.user = User.currentUser
         
-        bannerImageView.setImageWithURL((user?.backgroundURL)!)
         profileImageView.setImageWithURL((user?.profileURL)!)
+        //backgroundImageView.setImageWithURL((user?.backgroundURL)!)
         nameLabel.text = user?.name
         handleLabel.text = user?.screenname
         taglineTextView.text = user?.tagline
@@ -35,21 +34,21 @@ class ProfilePageViewController: UIViewController {
         statsSegementedControl.setTitle("10.4K " + " FOLLOWERS", forSegmentAtIndex: 1)
         statsSegementedControl.setTitle("3,011 " + " TWEETS", forSegmentAtIndex: 2)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

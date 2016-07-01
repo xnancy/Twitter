@@ -79,10 +79,25 @@ class TwitterClient: BDBOAuth1SessionManager {
                 success(tweets)
             },
             failure:{ (task: NSURLSessionDataTask?, error: NSError) -> Void in
-                failure(error)            }
+                failure(error)
+            }
         )
     }
     
+    func getRetweets(tweetID: String) -> [Tweet] {
+        var tweets: [Tweet] = []
+        let url = "1.1/statuses/retweets/" + tweetID + ".json"
+        POST(url, parameters: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) -> Void in
+            let dictionaries = response as! [NSDictionary]
+            let tweets = Tweet.tweetsWithArray(dictionaries)
+        },
+        failure:{ (task: NSURLSessionDataTask?, error: NSError) -> Void in
+            print(error.localizedDescription)
+            }
+        )
+        return tweets
+    }
+
     func retweet(tweet: Tweet, delegate: UITweetsViewControllerDelegate) {
         print("retweeting")
         let url = "1.1/statuses/retweet/" + tweet.tweetID! + ".json"
