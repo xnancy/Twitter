@@ -16,6 +16,9 @@ class User: NSObject {
     var screenname: String?
     var profileURL: NSURL?
     var tagline: String?
+    var numberFollowing: String?
+    var numberFollowers: String?
+    var numberTweets: String?
     
     var dictionary: NSDictionary?
     
@@ -29,6 +32,9 @@ class User: NSObject {
             profileURL = NSURL(string: profileUrlString)
         }
         tagline = dictionary["description"] as? String
+        numberFollowers = dictionary["followers_count"] as? String
+        numberFollowing = dictionary["friends_count"] as? String
+        numberTweets = dictionary["statuses_count"] as? String
     }
     
     // Current user class variable (computer property)

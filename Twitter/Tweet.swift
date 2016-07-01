@@ -18,6 +18,7 @@ class Tweet: NSObject {
     var timestamp: NSDate?
     var retweetCount: Int = 0
     var favoritesCount: Int = 0
+    var user: User?
     
     init(dictionary: NSDictionary) {
         tweetID = dictionary["id_str"] as? String
@@ -29,7 +30,7 @@ class Tweet: NSObject {
             profileURL = NSURL(string: profileUrlString)
             print("actuaul url: \(profileURL?.absoluteString)")
         }
-            
+        user = User.init(dictionary: dictionary["user"] as! NSDictionary)
         tweet = dictionary["text"] as? String
         retweetCount = (dictionary["retweet_count"] as? Int) ?? 0
         favoritesCount = (dictionary["favorite_count"] as? Int) ?? 0

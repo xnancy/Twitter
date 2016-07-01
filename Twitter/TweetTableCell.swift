@@ -20,39 +20,28 @@ class TweetTableCell: UIView {
     @IBOutlet weak var retweetCountLabel: UILabel!
     
     /* ---------- VARIABLES ---------- */
-    var profilePicture: UIImage? {
-        get { return profileImageView.image }
-        set { profileImageView.image = profilePicture }
-    }
-    
     var handle: String? {
-        get { return handleLabel.text }
-        set { handleLabel.text = handle }
+        didSet { handleLabel.text = handle }
     }
     
     var name: String? {
-        get { return nameLabel.text }
-        set { nameLabel.text = name }
+        didSet { nameLabel.text = name }
     }
     
     var tweet: String? {
-        get { return tweetLabel.text }
-        set { tweetLabel.text = tweet }
+        didSet { tweetLabel.text = tweet }
     }
     
     var timestamp: String? {
-        get { return timestampLabel.text }
-        set { timestampLabel.text = timestamp }
+        didSet { timestampLabel.text = timestamp }
     }
     
     var heartCount: Int? {
-        get { return Int(heartCountLabel.text!)}
-        set { heartCountLabel.text = String(heartCount) }
+        didSet { heartCountLabel.text = String(heartCount)}
     }
     
     var retweetCount: Int?  {
-        get { return Int(retweetCountLabel.text!)}
-        set { retweetCountLabel.text = String(retweetCount)}
+        didSet { retweetCountLabel.text = String(retweetCount!)}
     }
     
     var tweetID: String?
@@ -70,21 +59,35 @@ class TweetTableCell: UIView {
         initSubviews()
     }
     
-    init(tweet: Tweet, frame: CGRect) {
+    init(tweet: Tweet, frame: CGRect, delegate: UITweetsViewControllerDelegate) {
         super.init(frame: frame)
+        initSubviews()
+        
         profileImageView.setImageWithURL(tweet.profileURL!)
         tweetID = tweet.tweetID
-        handle = tweet.handle
-        name = tweet.name
-        retweetCount = tweet.retweetCount
-        heartCount = tweet.favoritesCount
+        handleLabel.text = tweet.handle
+        nameLabel.text = tweet.name
+        retweetCountLabel.text = String(tweet.retweetCount)
+        heartCountLabel.text = String(tweet.favoritesCount)
         self.tweet = tweet.tweet
         let timestampDate = tweet.timestamp
+
         let currentDate = NSDate()
-        let hoursFromCurrent = currentDate.hours(from: timestampDate!)
-        timestamp = String(hoursFromCurrent) + " hrs"
+        if (currentDate.years(from: timestampDate!) > 0) {
+            timestamp = String(currentDate.years(from: timestampDate!)) + " years"
+        } else if (currentDate.days(from: timestampDate!) > 0) {
+            timestamp = String(currentDate.days(from: timestampDate!)) + " days"
+        } else if (currentDate.hours(from: timestampDate!) > 0) {
+            timestamp = String(currentDate.hours(from: timestampDate!)) + " hrs"
+        } else if (currentDate.minutes(from: timestampDate!) > 0) {
+            timestamp = String(currentDate.minutes(from: timestampDate!)) + " mins"
+        } else {
+            timestamp = String(currentDate.seconds(from: timestampDate!)) + " secs"
+        }
+        timestampLabel.text = timestamp
         
-        initSubviews()
+        tweetObject = tweet
+        self.delegate = delegate
     }
 
     func initSubviews() {
@@ -100,11 +103,22 @@ class TweetTableCell: UIView {
 
     @IBAction func onReplyButton(sender: AnyObject) {
     }
+    
+    @IBAction func onCellTap(sender: AnyObject) {
+        let senderTyped = sender as! UITapGestureRecognizer
+        delegate!.presentDetailsPage(tweetObject!, cell: self.superview!.superview! as! TweetCell)
+    }
+    
+    // Send API retweet, update count, present view
     @IBAction func onRetweetButton(sender: AnyObject) {
         TwitterClient.sharedInstance.retweet(tweetObject!, delegate: delegate!)
-        print("button pressed")
+        retweetCountLabel.text = String(Int(retweetCountLabel.text!)! + 1)
+        delegate?.presentRetweetView()
     }
+    
     @IBAction func onHeartButton(sender: AnyObject) {
+        TwitterClient.sharedInstance.heart(tweetObject!, delegate: delegate!)
+        heartCountLabel.text = String(Int(heartCountLabel.text!)! + 1)
     }
 
     

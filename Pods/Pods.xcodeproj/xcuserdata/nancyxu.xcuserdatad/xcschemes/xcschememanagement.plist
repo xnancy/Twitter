@@ -14,6 +14,21 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>KLCPopup.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>NMPopUpViewSwift-NMPopUpViewSwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>NMPopUpViewSwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Twitter.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -32,12 +47,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1C3436CEA5C3D39764C5F54374794ECB</key>
+		<key>043D6AF29BB36B4E50BADAE14FAAC11E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3B104A3125828E1D07C205288F81D9C8</key>
+		<key>0DE93A80D9EC89B94FE9F41228A430A6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1C3436CEA5C3D39764C5F54374794ECB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -47,12 +67,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6DA26484DD7D039FFA40B71F673AF467</key>
+		<key>5AB4064A892A058275164B0D06D01EB3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B6B3321828DA14AC153C5CB92E9E659E</key>
+		<key>75582799E1268EDA36372D5A4E79563B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8A71BE69246FC835C062324CAA717C21</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>90B67AE5CEBA6C5D92C8DEC88761C282</key>
 		<dict>
 			<key>primary</key>
 			<true/>

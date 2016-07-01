@@ -86,7 +86,6 @@ class TwitterClient: BDBOAuth1SessionManager {
     func retweet(tweet: Tweet, delegate: UITweetsViewControllerDelegate) {
         print("retweeting")
         let url = "1.1/statuses/retweet/" + tweet.tweetID! + ".json"
-        print("url is: \(url)")
         POST(url, parameters: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) -> Void in
             delegate.presentRetweetView()
             },
@@ -95,6 +94,29 @@ class TwitterClient: BDBOAuth1SessionManager {
             }
         )
 
+    }
+    
+    func heart(tweet: Tweet, delegate: UITweetsViewControllerDelegate) {
+        print("hearting")
+        let url = "1.1/favorites/create.json?id=" + tweet.tweetID!
+        POST(url, parameters: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) -> Void in
+            delegate.presentRetweetView()
+            },
+             failure:{ (task: NSURLSessionDataTask?, error: NSError) -> Void in
+                print(error.localizedDescription)
+            }
+        )
+        
+    }
+    
+    func postTweet (text: String) {
+        let url = "1.1/statuses/update.json?status=" + text
+        POST(url, parameters: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) -> Void in
+            },
+             failure:{ (task: NSURLSessionDataTask?, error: NSError) -> Void in
+                print(error.localizedDescription)
+            }
+        )
     }
     
     func logout() {

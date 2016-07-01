@@ -7,9 +7,14 @@
 //
 
 import UIKit
+import NMPopUpViewSwift
+import KLCPopup
 
 protocol UITweetsViewControllerDelegate {
     func presentRetweetView()
+    func reloadTable()
+    func presentDetailsPage(tweet: Tweet, cell: TweetCell)
+    func dismissCompose()
 }
 
 class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITweetsViewControllerDelegate {
@@ -18,6 +23,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     /* ---------- VARIABLES ---------- */
     var tweets: [Tweet] = []
+    var popUpController: KLCPopup?
     
     /*  ---------- VIEW FUNCTIONS ----------  */
     override func viewDidLoad() {
@@ -28,7 +34,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(reloadTweets), forControlEvents: .ValueChanged)
         tweetsTable.insertSubview(refreshControl, atIndex: 0)
-        tweetsTable.estimatedRowHeight = 250
+        tweetsTable.estimatedRowHeight = 500
         tweetsTable.rowHeight = UITableViewAutomaticDimension
         // Instantiate tweets table view
         tweetsTable.delegate = self
@@ -72,6 +78,10 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let tweet = tweets[indexPath.row]
         let cell = tweetsTable.dequeueReusableCellWithIdentifier("tweetCell") as! TweetCell
+        return setTableCell(cell, tweet: tweet)
+    }
+    
+    func setTableCell (cell: TweetCell, tweet: Tweet) -> UITableViewCell {
         cell.tweetTableCellView.profileImageView.setImageWithURL(tweet.profileURL!)
         cell.tweetTableCellView.handleLabel.text = tweet.handle
         cell.tweetTableCellView.nameLabel.text = tweet.name
@@ -94,17 +104,48 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         } else {
             cell.tweetTableCellView.timestampLabel.text = String(currentDate.seconds(from: timestampDate!)) + " secs"
         }
-        
         return cell
     }
     
     /* ---------- TWEETS VIEW CONTROLLER DELEGATE ---------- */
     func presentRetweetView() {
-        print("did retweet")
+        /*var popUpRetweetController: PopUpViewControllerSwift = PopUpViewControllerSwift(nibName: "PopUpViewController", bundle: nil)
+        popUpRetweetController.title = "This is a popup view"
+        popUpRetweetController.showInView(self.view, withImage: UIImage(named: "heart"), withMessage: "message", animated: true)
+        popUpRetweetController.showInView(self.view, withImage: UIImage(named: "heart"), withMessage: "You just triggered a great popup window", animated: true)*/
+        print("did retweet end")
     }
     
+    func reloadTable() {
+        tweetsTable.reloadData()
+    }
+    
+    func presentDetailsPage(tweet: Tweet, cell: TweetCell) {
+        performSegueWithIdentifier("tweetDetailSegue", sender: cell)
+    }
     /* ---------- ACTIONS ---------- */
     @IBAction func onLogoutButton(sender: AnyObject) {
         TwitterClient.sharedInstance.logout()
+    }
+    
+    
+    @IBAction func onComposeButton(sender: AnyObject) {
+        let popUpView = ComposeView.init(frame: CGRectMake(1000, 1000, 300, 500))
+        popUpView.delegate = self
+        popUpController = KLCPopup.init(contentView: popUpView)
+        popUpController!.show()
+    }
+    
+    /* ---------- SEGUES ---------- */
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "tweetDetailSegue") {
+            let destinationVC = segue.destinationViewController as! TweetDetailViewController
+            let senderCell = sender as! TweetCell
+            destinationVC.tweet = senderCell.tweetTableCellView.tweetObject
+        }
+    }
+    
+    func dismissCompose() {
+        popUpController?.dismiss(true)
     }
 }

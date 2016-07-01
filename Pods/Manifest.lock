@@ -16,15 +16,21 @@ PODS:
     - AFNetworking/NSURLSession
   - BDBOAuth1Manager (2.0.0):
     - AFNetworking/NSURLSession (~> 3.0.0)
+  - KLCPopup (1.0)
+  - NMPopUpViewSwift (3.0.1)
 
 DEPENDENCIES:
   - AFNetworking (= 3.0.0)
   - BDBOAuth1Manager (= 2.0.0)
+  - KLCPopup
+  - NMPopUpViewSwift
 
 SPEC CHECKSUMS:
   AFNetworking: 932ff751f9d6fb1dad0b3af58b7e3ffba0a4e7fd
   BDBOAuth1Manager: 92d17d06f8a648602962304cd2f35ae7394fa001
+  KLCPopup: 76c5a19227977f1e53d85236f9ef42257c168d98
+  NMPopUpViewSwift: 23a44d6db17a9abc6b806f9fac597be6d7e9f300
 
-PODFILE CHECKSUM: e3cf8ec8e52f339b1e29db718c016c784a71edde
+PODFILE CHECKSUM: 2ed156810aede9c1fea0826cb32b32dc104a55ec
 
 COCOAPODS: 1.0.1
